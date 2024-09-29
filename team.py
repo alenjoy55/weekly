@@ -1,5 +1,6 @@
 print("**********football management system**********")
 football = []
+stats=[]
 
 while True:
     print("""
@@ -9,7 +10,9 @@ while True:
     4. search player
     5. delete player
     6. view available player
-    7.exit
+    7.player stats
+    8.view stats
+    9.exit
     """)
     
     choice = int(input("Enter Your Choice: "))
@@ -19,16 +22,16 @@ while True:
         pl_nation = input("enter player nation: ")
         pl_position = input("Enter position: ")
         pl_jersy=int(input("Enter a jersy number: "))
-        pl_stats=input("player available or unavailable: ")
-        football.append({'id':id,'name': pl_name,'nation':pl_nation,'position':pl_position,'pl_jersy':pl_jersy,'pl_stats':pl_stats})
+        pl_ava=input("player available or unavailable: ")
+        football.append({'id':id,'name': pl_name,'nation':pl_nation,'position':pl_position,'pl_jersy':pl_jersy,'pl_ava':pl_ava})
         print("Player added successfully!")
         
     elif choice == 2:
         print('_' * 90)
-        print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format('id', 'Name','nation', 'Position', 'jersy','stats'))
+        print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format('id', 'Name','nation', 'Position', 'jersy','available'))
         print('*' * 90)
         for i in football:
-                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format(i['id'], i['name'],i['nation'],i['position'], i['pl_jersy'],i['pl_stats']))
+                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format(i['id'], i['name'],i['nation'],i['position'], i['pl_jersy'],i['pl_ava']))
         # else:
         #      print("player not found!")
     
@@ -48,8 +51,8 @@ while True:
         pl_id = input("Enter the player id to Search: ")
         for i in football:
             if i['id'] == id:
-                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format('id','name', 'nation', 'position','jersy','stats'))
-                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format(i['id'],i['name'], i['nation'], i['position'],i['pl_jersy'],i['pl_stats']))
+                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format('id','name', 'nation', 'position','jersy','available'))
+                print('{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}'.format(i['id'],i['name'], i['nation'], i['position'],i['pl_jersy'],i['pl_ava']))
                 break
         else:
             print("***Player not found***")            
@@ -65,26 +68,48 @@ while True:
               print("invalid id!!!")
     elif choice==6:
          print('_'*90)
-         print("{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format('id','name','nation','position','jersy','stats'))
+         print("{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format('id','name','nation','position','jersy','available'))
          print('_'*90)
          for i in football:
-              if i['pl_stats']=='available':
-                   print("{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(i['id'],i['name'],i['nation'],i['position'],i['pl_jersy'],i['pl_stats']))
+                   print("{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(i['id'],i['name'],i['nation'],i['position'],i['pl_jersy'],i['pl_ava']))
     elif choice==7:
-         break
+         while True:
+              print('''
+                    1.season stats
+                    2.view stats
+               ''')
+              choice=int(input("enter your choice: "))
+              if choice==1:
+                   id=int(input("enter player id: "))
+                   name=input("enter player name: ")
+                   pl_j=int(input("enter player jersy number: "))
+                   goals=int(input("enter goals of season: "))
+                   assist=int(input("enter assist of season: "))
+                   stats.append({'id':id,'name':name,'pl_j':pl_j,'goals':goals,'assist':assist})
+    elif choice==8:
+         print('_'*90)
+         print("{:<10}{:<15}{:<15}{:<15}{:<15}".format('id','name','jersy','goals','assist'))
+         print('_'*90)
+         for i in stats:
+              if i['id']=='stats':
+                   print("{:<10}{:<15}{:<15}{:<15}{:<15}".format(i['id'],i['name'],i['pl_j'],i['goals'],i['assists']))
+
+    elif choice==7:
+          break
     else:
          print("invalid!!")
 
-     #     ch_id=int(input("enter coach id: "))
-     #     ch_name=input("enter coach name: ")
-     #     ch_nation=input("coach nation: ")
-     #     tatics=input("enter coach tatics: ")
-     #     contract=int(input("enter contract: "))
-     #     football.append({'coach_id':ch_id,'coach_name':ch_name,'nation':ch_nation,'tatics':tatics,'contract':contract})
-     #     print("coach added successfully! ")
+
+
+
+         
+         
+#     elif choice==7:
+#          break
+#     else:
+#          print("invalid!!")
 
          
 
 
               
-
