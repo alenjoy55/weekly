@@ -6,8 +6,10 @@ def login():
     user=''
     if uname=='admin' and passw=='admin':
         f=1
+    if uname.isdigit():
+        uname=int(uname)
     for i in emp:
-        if i['id']==uname and i['passw']==passw:
+        if i['id']==uname and i['password']==passw:
             f=2
             user=i
     return f,user
