@@ -17,4 +17,45 @@ def add_emp():
         emp.append({'id':id,'name':name,'age':age,'salary':salary,'place':place,'dob':dob,'password':user_pass})
         print('employee added successfully....')
         print(emp)
+
+def admin_update():
+    print(emp)
+    id=int(input('enter your id: '))
+    f=0
+    for i in emp:
+        if i['id']==id:
+            f=1
+            name=input('enter your name: ')
+            age=int(input('enter your age: '))
+            salary=int(input('enter your salary'))
+            place=input('enter your place: ')
+            dob=input('enter your date of birth: ')
+            i['name']=name
+            i['age']=age
+            i['salary']=salary
+            i['place']=place
+            i['dob']=dob
+            print('updated successfully')
+    if f==0:
+        print('invalid id!!!')
+
+def admin_delete():
+    id=int(input('enter your id: '))
+    f3=0
+    for i in emp:
+        if i['id']==id:
+            f3=1
+            emp.remove(i)
+            print('REMOVED!!!')
+    
+    if f3==0:
+        print('invalid id!!!!')
+
+def admin_display():
+    print('_'*65)
+    print("{:<10}{:<10}{:<10}{:<10}{:<10}{:<15}".format('id','name','age','salary','place','dob'))
+    print('_'*65)
+    for i in emp:
+        print("{:<10}{:<10}{:<10}{:<10}{:<10}{:<15}".format(i['id'],i['name'],i['age'],i['salary'],i['place'],i['dob']))
+        
         
